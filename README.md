@@ -16,8 +16,8 @@ yum groupinstall "Development Tools"
 
 Clone the repo:
 ```bash
-git clone https://github.com/TelegramMessenger/MTProxy
-cd MTProxy
+git clone https://github.com/elraro/MTProxy
+cd MTProxy/MTProxy
 ```
 
 To build, simply run `make`, the binary will be in `objs/bin/mtproto-proxy`:
@@ -105,5 +105,4 @@ systemctl enable MTProxy.service
 ```
 
 ## Docker image
-Telegram is also providing [official Docker image](https://hub.docker.com/r/telegrammessenger/proxy/).
-Note: the image is outdated.
+There is a [Docker image](https://github.com/elraro/mtproxy/pkgs/container/mtproxy).
