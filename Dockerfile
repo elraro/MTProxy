@@ -2,10 +2,11 @@ FROM ubuntu:jammy as builder
 
 RUN set -eux \
     && apt update \
-    && apt install -y build-essential libssl-dev zlib1g-dev
+    && apt install -y git build-essential libssl-dev zlib1g-dev
 
 RUN mkdir proxy
 ADD . proxy/
+RUN ls -lah proxy/
 RUN cd proxy/MTProxy \
     && make
 
