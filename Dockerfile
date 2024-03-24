@@ -10,10 +10,11 @@ RUN git clone https://github.com/elraro/MTProxy \
 
 FROM ubuntu:jammy
 RUN mkdir /data
-COPY --from=builder MTProxy/objs/bin/mtproto-proxy /usr/local/mtproto-proxy
-COPY --from=builder MTProxy/run.sh /run.sh 
+RUN mkdir /etc/telegram
+COPY --from=builder MTProxy/objs/bin/mtproto-proxy /usr/local/bin/mtproto-proxy
 RUN set -eux \
     && apt-get update \
-    && apt-get install -y --no-install-recommends curl ca-certificates \
+    && apt-get install -y --no-install-recommends iproute2 curl ca-certificates \
     && rm -rf /var/lib/apt/lists/* ;
-CMD ["/run.sh"]
+COPY --from=builder MTProxy/run.sh /run.sh
+ENTRYPOINT ["/run.sh"]
